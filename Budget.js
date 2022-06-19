@@ -63,20 +63,28 @@ const calculateBudget = (income1 = 0, income2 = 0, stateTaxPercentage = 0)=>{
 
 //Delete a bill
 const deleteBill = (billId)=>{
-
+    //get a single bill based in the id provided, and assign its type to a variable.
     const billType = billCollection[billId].Type;
 
+    //if the bill type is "Necessary" then delete it from the array else dont delete it and display a message to the user
     if(billType === "Necessary"){
         billCollection.splice(billId, 1);
     } else {
         console.log("I am sorry but the bill needs to be Necessary to be deleted!")
     }
 
+    //List all the bills either way of changes.
     displayBills();
 
 }
 
 //5- Call the Print bill and get Total functions
+
+//Display the bill
 displayBills();
+
+//get total using income 1, income 2 and state tax percentage
 calculateBudget(4360, 1600, 12.33);
+
+//delete the first bill of the array
 deleteBill(0);
